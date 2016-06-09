@@ -1,2 +1,5 @@
+.idea
 .cordova
 platforms/browser
+plugins/*
+!plugins/browser.json
