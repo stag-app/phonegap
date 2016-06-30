@@ -17,15 +17,15 @@
     * Create your own at http://cspisawesome.com
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-
+    <link rel="stylesheet" type="text/css" href="lib/jquery-ui.min.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>STAG</title>
 </head>
 
 <body>
-    <div class="app">
-        <h1>STAG</h1>
-    </div>
+    <div class="count"></div>
+    <div id="down" class="updown">-</div>
+    <div id="up" class="updown">+</div>
     <div id="nfc" class="btn">
         RESET<br>
         <small>Register NFC</small>
@@ -36,6 +36,8 @@
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="lib/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="lib/sevenSeg.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 </body>
 

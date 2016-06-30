@@ -1,10 +1,12 @@
 var count = 0;
 
-var minDeg = 60;
-var minVer = 10;
+var minDeg = 40;
+var minVer = 30;
 
 var $nfcBtn = $('#nfc');
 var $gyroBtn = $('#gyro');
+
+var BASE_URL = "https://stag-api.herokuapp.com";
 
 document.addEventListener('deviceready', function(){
     $nfcBtn.click(onTagDiscovered);
@@ -23,16 +25,30 @@ document.addEventListener('deviceready', function(){
         window.addEventListener('deviceorientation', orientationCallback, false);
     }
 
+    $(".count").sevenSeg({ digits: 2, value: 0 });
+
+    $("#up").click(onOpen);
+    $("#down").click(onMinus);
+
 }, false);
 
-function onTagDiscovered(){
+function onTagDiscovered(event){
     count=0;
-    $("h1").text(count);
+    $(".count").sevenSeg({ value: count });
+    fetch(BASE_URL + '/api/nfc?id='+event.tag.id.join('_'));
 }
 
 function onOpen(){
     count++;
-    $("h1").text(count);
+    $(".count").sevenSeg({ value: count });
+    fetch(BASE_URL + '/api/setCount?count='+count);
+}
+
+function onMinus(){
+    if(count == 0) return;
+    count--;
+    $(".count").sevenSeg({ value: count });
+    fetch(BASE_URL + '/api/setCount?count='+count);
 }
 
 var open = 0;
